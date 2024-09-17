@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    PYTHONPATH = "var/lib/jenkins/workspace/workload_3_main"
+    PYTHONPATH=var/lib/jenkins/workspace/workload_3_main
   }
     stages {
         stage ('Build') {
@@ -21,6 +21,7 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                 source venv/bin/activate
+		export PYTHONPATH=var/lib/jenkins/workspace/workload_3_main
                 py.test ./tests/unit/ --verbose --junit-xml test-reports/results.xml
                 '''
             }
