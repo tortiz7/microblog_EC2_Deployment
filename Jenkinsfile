@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  environment {
+    PYTHHONPATH = "."
+  }
     stages {
         stage ('Build') {
             steps {
