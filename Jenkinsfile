@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    PYTHONPATH=var/lib/jenkins/workspace/workload_3_main
+    PYTHONPATH = "var/lib/jenkins/workspace/workload_3_main"
   }
     stages {
         stage ('Build') {
