@@ -3,8 +3,14 @@ pipeline {
     stages {
         stage ('Build') {
             steps {
-                sh '''#!/bin/bash
-                <enter your code here>
+                sh '''#!/bin/bash               
+	         python3.9 -m venv venv
+                 source venv/bin/activate
+                 pip install -r requirements.txt
+		 pip install gunicorn pymysql crptography
+		 FLASK_APP=microblog.py
+		 flask translate compile
+		 flask db upgrade
                 '''
             }
         }
@@ -32,8 +38,8 @@ pipeline {
                 sh '''#!/bin/bash
                 if [[ $(ps aux | grep -i "gunicorn" | tr -s " " | head -n 1 | cut -d " " -f 2) != 0 ]]
                 then
-                ps aux | grep -i "gunicorn" | tr -s " " | head -n 1 | cut -d " " -f 2 > pid.txt
-                kill $(cat pid.txt)
+                 ps aux | grep -i "gunicorn" | tr -s " " | head -n 1 | cut -d " " -f 2 > pid.txt
+                 kill $(cat pid.txt)
                 exit 0
                 fi
                 '''
@@ -42,7 +48,8 @@ pipeline {
       stage ('Deploy') {
             steps {
                 sh '''#!/bin/bash
-                <enter your code here>
+		source venv/bin/activate
+                FLASK_APP=microblog.py gunicorn -b :5000 -w 4 microblog:app &
                 '''
             }
         }
