@@ -50,7 +50,7 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
 		source venv/bin/activate
-                FLASK_APP=microblog.py gunicorn -b :5000 -w 4 microblog:app &
+                sudo systemctl restart gunicorn
                 '''
             }
         }
