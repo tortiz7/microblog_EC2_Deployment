@@ -465,10 +465,10 @@ As we move forward, the skills and knowledge gained from this workload will be i
 
 ![image](https://github.com/user-attachments/assets/3479abdf-e2a3-474a-849c-8b5829b5112b)
 
-**Successfull OWASP Dependency Check**
+**Successful OWASP Dependency Check**
 
 ![image](https://github.com/user-attachments/assets/59b6ae5b-6d8f-41e8-a216-a752cab49bac)
 
-**Successfull Pytest**
+**Successful Pytest**
 
 ![image](https://github.com/user-attachments/assets/df888839-c8eb-4f07-ba06-e2ac5fd0ac8b)
