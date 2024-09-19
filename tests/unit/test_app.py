@@ -1,6 +1,6 @@
 import pytest
 from microblog import create_app
-
+# set pytest fixture
 @pytest.fixture
 def client():
   app = create_app()
