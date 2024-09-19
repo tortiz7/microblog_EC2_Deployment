@@ -1,34 +1,24 @@
 import pytest
 from microblog import create_app
 
-def test_home_page():
-    """Test the home page."""
-    app = create_app()
-    app.config['TESTING'] = True
-    app.config['WTF_CSRF_ENABLED'] = False
+@pytest.fixture
+def client():
+  app = create_app()
+  app.config['TESTING'] = True
+  with app.test_client() as client:
+    with app.app_context():
+      yield client
 
-    with app.test_client() as client:
-        response = client.get('/', follow_redirects=True)
-        assert response.status_code == 200
-        assert b'Microblog' in response.data
+def test_home_page(client):
+  response = client.get('/', follow_redirects=True)
+  assert response.status_code == 200
+  assert b'Microblog' in response.data
 
-def test_login_page():
-    """Test the login page."""
-    app = create_app()
-    app.config['TESTING'] = True
-    app.config['WTF_CSRF_ENABLED'] = False
+def test_login_page(client):
+  response = client.get('/auth/login')
+  assert response.status_code == 200
+  assert b'Microblog' in response.data
 
-    with app.test_client() as client:
-        response = client.get('/auth/login')
-        assert response.status_code == 200
-        assert b'Microblog' in response.data
-
-def test_404_page():
-    """Test a non-existent page."""
-    app = create_app()
-    app.config['TESTING'] = True
-    app.config['WTF_CSRF_ENABLED'] = False
-
-    with app.test_client() as client:
-        response = client.get('/nonexistent')
-        assert response.status_code == 404
+def test_404_page(client):
+  response = client.get('/nonexistent')
+  assert response.status_code == 404
