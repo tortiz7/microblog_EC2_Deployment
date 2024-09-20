@@ -11,7 +11,7 @@ This project emphasizes hands-on experience with tools such as Jenkins for autom
 ## STEPS
 
 **Create EC2 Instances and AWS Access Keys**
-- **Why**: To launch the Microblog Flask application, monitor the server that is running it, and gain acces to these two servers, we will need to create an AWS Access Key and two EC2's. AWS Access Keys are necessary for programmatic access to AWS services. The key we generate will be used to securely SSH into the EC2's. The 
+- **Why**: To launch the Microblog Flask application, monitor the server that is running it, and gain acces to these two servers, we will need to create an AWS Access Key and two EC2's. AWS Access Keys are necessary for programmatic access to AWS services. The key we generate will be used to securely SSH into the EC2's.
   
 - **How:**
 - **Create the AWS Access Key:**
